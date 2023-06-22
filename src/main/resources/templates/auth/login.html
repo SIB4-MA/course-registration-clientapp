@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+  </head>
+  <body>
+    <!-- belum masuk ke main layout -->
+    <div class="container text-left" id="content-wrapper">
+      <div class="row align-items-center">
+        <div class="col-4 d-flex align-items-center" id="content-left">
+          <div>
+            <form
+              th:action="@{/login}"
+              th:method="POST"
+              th:object="${loginRequest}"
+            >
+              <h2 class="mb-3 fw-bold text-danger">Login Page</h2>
+              <div class="mb-3">
+                <label for="username" class="form-label">Username: </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  th:field="*{username}"
+                />
+                <div>
+                  <p th:text="${message}">
+                    Login error occurred. Please try again.
+                  </p>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password: </label>
+                <input
+                  type="password"
+                  class="form-control"
+                  th:field="*{password}"
+                />
+              </div>
+              <p>Belum punya akun? <a href="/register">buat akun</a></p>
+              <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+          </div>
+        </div>
+        <div class="col"></div>
+      </div>
+    </div>
+  </body>
+</html>

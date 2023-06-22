@@ -16,7 +16,7 @@ public class RequestInterceptor implements ClientHttpRequestInterceptor {
       throws IOException {
     Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
-    if (!request.getURI().getPath().equals("/login") && !request.getURI().getPath().equals("/register")) {
+    if (!request.getURI().getPath().equals("/api/login") && !request.getURI().getPath().equals("/api/register")) {
       request.getHeaders().add("Authorization", "Basic " + BasicHeader.createBasicToken(
           auth.getName(), auth.getCredentials().toString()));
     }

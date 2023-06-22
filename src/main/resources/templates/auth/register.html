@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- belum masuk ke main layout -->
+    <section class="container">
+      <h3 class="text-center fw-bold text-danger">Buat Akun Baru</h3>
+      <form
+        class="shadow p-3 mb-5 rounded"
+        th:action="@{/register}"
+        th:method="POST"
+        th:object="${userRequest}"
+      >
+        <div class="mb-3">
+          <label for="name" class="form-label">Nama</label>
+          <input
+            type="text"
+            class="form-control"
+            th:field="*{name}"
+            id="name"
+            aria-describedby="helpId"
+            placeholder="Mizuhara Chizuru"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            th:field="*{email}"
+            id="email"
+            aria-describedby="emailHelpId"
+            placeholder="yotsubanakano@mail.com"
+            required
+          />
+        </div>
+        <!-- <div class="mb-3">
+          <label for="phone" class="form-label">No Phone</label>
+          <input
+            type="tel"
+            class="form-control"
+            th:field="*{phone}"
+            id="phone"
+            aria-describedby="helpId"
+            placeholder="0895363053955"
+            required
+          />
+        </div> -->
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <input
+            type="text"
+            class="form-control"
+            th:field="*{username}"
+            id="username"
+            aria-describedby="helpId"
+            placeholder="akane"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            th:field="*{password}"
+            id="password"
+            placeholder=""
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <p th:text="${message}"></p>
+        </div>
+
+        <div class="mb-3 text-center">
+          <button type="submit" class="btn btn-danger">Daftar</button>
+        </div>
+      </form>
+    </section>
+  </body>
+</html>
