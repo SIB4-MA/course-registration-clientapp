@@ -16,5 +16,5 @@ import lombok.NoArgsConstructor;
 public class ResponseData<T> {
   private boolean status;
   private List<String> messages = new ArrayList<>();
-  private List<T> playload = new ArrayList<>();
+  private List<T> payload = new ArrayList<>();
 }

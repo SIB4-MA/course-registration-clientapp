@@ -46,7 +46,7 @@ public class LoginService {
           new ParameterizedTypeReference<ResponseData<LoginResponse>>() {
           });
 
-      LoginResponse loginResponse = response.getBody().getPlayload().get(0);
+      LoginResponse loginResponse = response.getBody().getPayload().get(0);
       setAuthentication(loginResponse, loginRequest.getPassword());
       return response.getBody();
 
