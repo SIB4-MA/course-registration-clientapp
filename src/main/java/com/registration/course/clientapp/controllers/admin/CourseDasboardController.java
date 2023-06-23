@@ -4,8 +4,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.registration.course.clientapp.models.Course;
 import com.registration.course.clientapp.services.CourseService;
 
 import lombok.AllArgsConstructor;
@@ -35,6 +37,12 @@ public class CourseDasboardController {
 
     model.addAttribute("course", courseService.getById(id).getPayload().get(0));
     return "admin/course/course-update";
+  }
+
+  @PutMapping("/{id}")
+  public String updateCourse(@PathVariable Integer id, Course course) {
+    courseService.update(id, course);
+    return "redirect:/admin/dasboard/course";
   }
 
 }

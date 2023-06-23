@@ -3,6 +3,7 @@ package com.registration.course.clientapp.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -34,6 +35,18 @@ public class CourseService {
             url.concat("/" + id),
             HttpMethod.GET,
             null,
+            new ParameterizedTypeReference<ResponseData<Course>>() {
+            })
+        .getBody();
+  }
+
+  public ResponseData<Course> update(Integer id, Course course) {
+    HttpEntity<Course> httpEntity = new HttpEntity<Course>(course);
+    return restTemplate
+        .exchange(
+            url.concat("/" + id),
+            HttpMethod.PUT,
+            httpEntity,
             new ParameterizedTypeReference<ResponseData<Course>>() {
             })
         .getBody();
