@@ -52,4 +52,14 @@ public class CourseService {
         .getBody();
   }
 
+  public ResponseData<Course> create(Course course) {
+    HttpEntity<Course> httpEntity = new HttpEntity<Course>(course);
+    return restTemplate.exchange(
+        url,
+        HttpMethod.POST,
+        httpEntity,
+        new ParameterizedTypeReference<ResponseData<Course>>() {
+        }).getBody();
+  }
+
 }

@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -42,6 +43,18 @@ public class CourseDasboardController {
   @PutMapping("/{id}")
   public String updateCourse(@PathVariable Integer id, Course course) {
     courseService.update(id, course);
+    return "redirect:/admin/dasboard/course";
+  }
+
+  @GetMapping("/create")
+  public String createPage(Model model, Course course) {
+
+    return "admin/course/course-create";
+  }
+
+  @PostMapping
+  public String create(Course course) {
+    courseService.create(course);
     return "redirect:/admin/dasboard/course";
   }
 
