@@ -61,7 +61,7 @@
             </a>
           </li>
 
-          <li>
+          <li class="visually-hidden">
             <a href="#">
               <span class="icon">
                 <ion-icon name="help-outline"></ion-icon>
@@ -70,7 +70,7 @@
             </a>
           </li>
 
-          <li>
+          <li class="visually-hidden">
             <a href="#">
               <span class="icon">
                 <ion-icon name="settings-outline"></ion-icon>
@@ -79,7 +79,7 @@
             </a>
           </li>
 
-          <li>
+          <li class="visually-hidden">
             <a href="#">
               <span class="icon">
                 <ion-icon name="lock-closed-outline"></ion-icon>
@@ -89,12 +89,30 @@
           </li>
 
           <li>
-            <a href="#">
+            <!-- <form th:action="@{/login}" method="post">
+              <button
+              type="submit"
+              class="btn btn-danger text-white position-relative"
+              >
+              Logout
+              <span
+              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary"
+              >
+              <span
+              th:text="${isROLE} == 'ROLE_ADMIN' ? 'admin' : 'user'"
+              ></span>
+              <span class="visually-hidden">status</span>
+            </span>
+          </button>
+        </form> -->
+            <!-- <form th:action="@{/login}" method="post"> -->
+            <a th:href="@{/logout}">
               <span class="icon">
                 <ion-icon name="log-out-outline"></ion-icon>
               </span>
               <span class="title">Sign Out</span>
             </a>
+            <!-- </form> -->
           </li>
         </ul>
       </div>
