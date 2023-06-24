@@ -28,7 +28,6 @@ public class LoginController {
   @RequestMapping("/login")
   public String loginPage(LoginRequest loginRequest, Model model, Authentication authentication,
       @ModelAttribute("message") String messages) {
-    System.out.println(messages);
     if (authentication != null && authentication.isAuthenticated()) {
       model.addAttribute("auth", true);
     } else {
@@ -39,14 +38,20 @@ public class LoginController {
   }
 
   @PostMapping("/login")
-  public String login(LoginRequest loginRequest, RedirectAttributes redirectAttributes)
+  public String login(LoginRequest loginRequest, RedirectAttributes redirectAttributes, Authentication authentication)
       throws JsonMappingException, JsonProcessingException {
     ResponseData<LoginResponse> responseData = loginService.login(loginRequest);
+
+    if (responseData.getPayload().get(0).getAuthorities().get(0).toString().equalsIgnoreCase("ROLE_ADMIN")) {
+      return "redirect:/admin/dasboard";
+
+    }
+
     if (!responseData.isStatus()) {
       redirectAttributes.addAttribute("message", responseData.getMessages());
-
       return "redirect:/login";
     }
+
     return "redirect:/";
   }
 
