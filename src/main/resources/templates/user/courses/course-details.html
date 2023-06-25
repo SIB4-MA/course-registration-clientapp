@@ -79,7 +79,7 @@
               <div
                 class="course-info d-flex justify-content-between align-items-center"
               >
-              <form action="">
+              <form th:action="@{/courses/{id} (id=${course.id})}" th:method="POST">
                 <div class="form-check">
                   <input
                     class="form-check-input"

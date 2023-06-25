@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.registration.course.clientapp.models.Transaction;
+import com.registration.course.clientapp.models.dto.request.TransactionRequest;
 import com.registration.course.clientapp.models.dto.request.TransactionStatusAndIsRegisteredRequest;
 import com.registration.course.clientapp.models.dto.response.ResponseData;
 
@@ -49,6 +50,16 @@ public class TransactionService {
         url.concat("/member/" + id),
         HttpMethod.GET,
         null,
+        new ParameterizedTypeReference<ResponseData<Transaction>>() {
+        }).getBody();
+  }
+
+  public ResponseData<Transaction> createTransaction(TransactionRequest transactionRequest) {
+    HttpEntity<TransactionRequest> httpEntity = new HttpEntity<TransactionRequest>(transactionRequest);
+    return restTemplate.exchange(
+        url,
+        HttpMethod.POST,
+        httpEntity,
         new ParameterizedTypeReference<ResponseData<Transaction>>() {
         }).getBody();
   }
