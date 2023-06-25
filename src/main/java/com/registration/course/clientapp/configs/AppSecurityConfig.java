@@ -13,10 +13,10 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
   protected void configure(HttpSecurity http) throws Exception {
     http
         .authorizeRequests()
-        .antMatchers("/js/**", "/css/**", "/img/**").permitAll()
+        .antMatchers("/js/**", "/css/**", "/img/**", "/assets/**").permitAll()
         .antMatchers("/login").permitAll()
         .antMatchers("/register").permitAll()
-        .antMatchers("/").permitAll()
+        .antMatchers("/", "/courses/**").permitAll()
         .anyRequest().authenticated()
         .and()
         .formLogin()
