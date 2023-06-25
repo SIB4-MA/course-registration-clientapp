@@ -44,4 +44,13 @@ public class TransactionService {
         .getBody();
   }
 
+  public ResponseData<Transaction> getTransactionByMemberId(Integer id) {
+    return restTemplate.exchange(
+        url.concat("/member/" + id),
+        HttpMethod.GET,
+        null,
+        new ParameterizedTypeReference<ResponseData<Transaction>>() {
+        }).getBody();
+  }
+
 }
