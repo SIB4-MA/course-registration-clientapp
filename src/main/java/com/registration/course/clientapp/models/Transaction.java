@@ -16,7 +16,7 @@ public class Transaction {
   private Course course;
   private Member member;
   private TransactionStatus status;
-  private Boolean is_registered = false;
+  private Boolean isRegistered = false;
   private Timestamp created_at;
   private List<History> histories;
 

@@ -25,13 +25,15 @@
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. At eveniet
           quos repellat suscipit? Nisi, at?
         </h2>
-        <a href="courses.html" class="btn-get-started">Masuk</a>
+        <th:block th:if="${not auth}">
+          <a th:href="@{/login}" class="btn-get-started">Masuk</a>
+        </th:block>
       </div>
     </section>
 
     <!-- =================== main content below ==================== -->
     <main id="main" layout:fragment="main-user">
-      <section id="popular-courses" class="courses">
+      <!-- <section id="popular-courses" class="courses">
         <div class="container" data-aos="fade-up">
           <div class="section-title">
             <h2>Courses</h2>
@@ -77,9 +79,9 @@
                   </div>
                 </div>
               </div>
-            </div>
-            <!-- End Course Item-->
-
+            </div> -->
+      <!-- End Course Item-->
+      <!-- 
             <div
               class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0"
             >
@@ -122,9 +124,9 @@
                   </div>
                 </div>
               </div>
-            </div>
-            <!-- End Course Item-->
-
+            </div> -->
+      <!-- End Course Item-->
+      <!-- 
             <div
               class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0"
             >
@@ -165,11 +167,11 @@
                   </div>
                 </div>
               </div>
-            </div>
-            <!-- End Course Item-->
-          </div>
+            </div> -->
+      <!-- End Course Item-->
+      <!-- </div>
         </div>
-      </section>
+      </section> -->
     </main>
 
     <th:block layout:fragment="script">

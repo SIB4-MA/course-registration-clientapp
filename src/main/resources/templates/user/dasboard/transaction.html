@@ -22,7 +22,6 @@
             <thead>
               <tr>
                 <td>No</td>
-                <td>#</td>
                 <td>Tanggal</td>
                 <td>Member Name</td>
                 <td>Course Name</td>
@@ -34,7 +33,6 @@
             <tbody th:each="transaction, key : ${transactions}">
               <tr>
                 <td th:text="${key.count}"></td>
-                <td th:text="${transaction.id}"></td>
                 <td th:text="${transaction.created_at}"></td>
                 <th:block th:each="member : ${transaction.member}" >
                   <td th:text="${member.name}"></td>
@@ -67,7 +65,7 @@
     </div>
      <th:block layout:fragment="script">
       <!-- <script type="module" th:src="@{js/page/country.js}"></script> -->
-      <script type="module" th:src="@{/js/course-admin.js}"></script>
+      <!-- <script type="module" th:src="@{/js/course-admin.js}"></script> -->
     </th:block>
   </body>
 </html>

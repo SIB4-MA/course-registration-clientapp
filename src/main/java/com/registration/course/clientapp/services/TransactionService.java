@@ -64,4 +64,13 @@ public class TransactionService {
         }).getBody();
   }
 
+  public ResponseData<Transaction> getTransactionByMemberIdSessionIsRegistered() {
+    return restTemplate.exchange(
+        url.concat("/course-registered/"),
+        HttpMethod.GET,
+        null,
+        new ParameterizedTypeReference<ResponseData<Transaction>>() {
+        }).getBody();
+  }
+
 }

@@ -240,7 +240,7 @@ body {
   position: relative;
   font-weight: 500;
   font-size: 2.5rem;
-  color: var(--blue);
+  color: #49945f;
 }
 
 .cardBox .card .cardName {
@@ -255,7 +255,7 @@ body {
 }
 
 .cardBox .card:hover {
-  background: var(--blue);
+  background: #77fd9f;
 }
 
 .cardBox .card:hover .numbers,
@@ -293,7 +293,7 @@ body {
 
 .cardHeader h2 {
   font-weight: 600;
-  color: var(--blue);
+  color: #367a4b;
 }
 
 .cardHeader .btn {

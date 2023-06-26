@@ -56,16 +56,13 @@
                   <td>
                     <span
                     class="status delivered"
-                    th:classappend="${transaction.is_registered.toString() == 'false' && transaction.status.toString() == 'FAILED'} ? 'return' : (${transaction.is_registered.toString() == 'true'} ? 'delivered' : 'pending')"
-                    th:text="${transaction.is_registered}"
+                    th:classappend="${transaction.isRegistered.toString() == 'false' && transaction.status.toString() == 'FAILED'} ? 'return' : (${transaction.isRegistered.toString() == 'true'} ? 'delivered' : 'pending')"
+                    th:text="${transaction.isRegistered}"
                   ></span>
                 </td>
                 <td>
                   <!-- <a  th:href="@{/admin/dasboard/transaction/{id} (id=${transaction.id})}" id="btn-detail" class="btn">detail</a> -->
-                  <button th:attr="data-id=${transaction.id}"  id="btn-updateStatus" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update-status-modal">update status</button>
-
-                  <!-- <a  th:href="@{/admin/dasboard/transaction/update/{id} (id=${transaction.id})}" id="btn-detail" class="btn">update status</a> -->
-                  <!-- <a href="#" class="btn disabled">delete</a> -->
+                  <button th:attr="data-id=${transaction.id}"  id="btn-updateStatus" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#update-status-modal"><ion-icon name="create"></ion-icon></button>
                 </td>
               </tr>
             </tbody>

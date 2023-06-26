@@ -61,4 +61,17 @@ public class MemberDasboardPage {
     }
     return "user/dasboard/transaction";
   }
+
+  @GetMapping("/course")
+  public String renderAllCourseIsRegisteredByTransaction(Model model, Authentication authentication) {
+    if (authentication != null && authentication.isAuthenticated()) {
+      model.addAttribute("auth", true);
+      model.addAttribute("authentication", authentication);
+      model.addAttribute("isROLE", authentication.getAuthorities().stream().findFirst().orElse(null).getAuthority());
+      model.addAttribute("transactions", transactionService.getTransactionByMemberIdSessionIsRegistered().getPayload());
+    } else {
+      model.addAttribute("auth", false);
+    }
+    return "user/dasboard/course";
+  }
 }
