@@ -27,6 +27,7 @@
                 <td>#</td>
                 <td>Tanggal</td>
                 <td>Member Name</td>
+                <td>Member Email</td>
                 <td>Course Name</td>
                 <td>Status</td>
                 <td>terdaftar</td>
@@ -41,6 +42,7 @@
                 <td th:text="${transaction.created_at}"></td>
                 <th:block th:each="member : ${transaction.member}" >
                   <td th:text="${member.name}"></td>
+                  <td th:text="${member.email}"></td>
                 </th:block>
                 <th:block th:each=" course : ${transaction.course}">
                   <td th:text="${course.title}"></td>
