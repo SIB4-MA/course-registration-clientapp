@@ -17,6 +17,7 @@ public class Member {
   private Long phone;
   private String city;
   private String nationaly;
+  private Integer activeCourse;
   private User user;
   List<Transaction> transactions;
 
