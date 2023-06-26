@@ -42,10 +42,17 @@
               <input th:field="*{price}" type="text" class="form-control" id="price" required>
             </div>
             <div class="col-md-12">
-              <div class="form-floating">
-              <textarea th:field="*{description}" class="form-control" placeholder="Leave a comment here" id="description" required></textarea>
               <label for="description">Description</label>
-            </div>
+                <textarea th:field="*{description}" id="editor">
+                  This is some sample content.
+                </textarea>
+                <script>
+                  ClassicEditor
+                    .create(document.querySelector('#editor'))
+                    .catch(error => {
+                      console.error(error);
+                    });
+                </script>
             </div>
          
             <div class="col-md-4">
