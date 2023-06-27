@@ -18,7 +18,6 @@ import lombok.AllArgsConstructor;
 @Controller
 @AllArgsConstructor
 @RequestMapping("/courses")
-@PreAuthorize("hasRole('USER')")
 public class CoursesPageController {
 
   private CourseService courseService;
@@ -52,7 +51,7 @@ public class CoursesPageController {
     return "user/courses/course-details";
   }
 
-  // user
+  @PreAuthorize("hasRole('USER')")
   @PostMapping("/{id}")
   public String CreateNewTransactionCourse(@PathVariable Integer id, TransactionRequest transactionRequest,
       Authentication authentication) {
