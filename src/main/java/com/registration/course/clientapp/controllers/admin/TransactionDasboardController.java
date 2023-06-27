@@ -3,6 +3,7 @@ package com.registration.course.clientapp.controllers.admin;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.registration.course.clientapp.models.dto.request.TransactionStatusAndIsRegisteredRequest;
@@ -23,6 +24,13 @@ public class TransactionDasboardController {
     model.addAttribute("transactions", transactionService.getAll().getPayload());
 
     return "admin/transaction/transaction";
+  }
+
+  @GetMapping("/{id}")
+  public String getTransactionById(@PathVariable Integer id, Model model) {
+    model.addAttribute("transaction", transactionService.getTransactionById(id).getPayload().get(0));
+
+    return "admin/transaction/update-transaction";
   }
 
 }

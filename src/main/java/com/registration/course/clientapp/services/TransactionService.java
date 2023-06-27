@@ -54,6 +54,15 @@ public class TransactionService {
         }).getBody();
   }
 
+  public ResponseData<Transaction> getTransactionById(Integer id) {
+    return restTemplate.exchange(
+        url.concat("/" + id),
+        HttpMethod.GET,
+        null,
+        new ParameterizedTypeReference<ResponseData<Transaction>>() {
+        }).getBody();
+  }
+
   public ResponseData<Transaction> createTransaction(TransactionRequest transactionRequest) {
     HttpEntity<TransactionRequest> httpEntity = new HttpEntity<TransactionRequest>(transactionRequest);
     return restTemplate.exchange(

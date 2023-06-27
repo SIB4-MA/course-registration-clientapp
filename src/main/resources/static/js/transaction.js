@@ -1,42 +1,35 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const buttonUpdateEL = document.querySelectorAll("#btn-updateStatus");
-  const btnSaveEL = document.querySelector("#btn-save");
-  const modal = document.querySelector("#update-status-modal");
+const button = document.getElementById("myButton");
+const spinner = document.getElementById("loadingSpinner");
+const data = document.getElementById("dataId");
+function performAction() {
+  button.classList.add("disabled");
+  spinner.style.display = "inline-block";
+  const id = data.innerText;
 
-  buttonUpdateEL.forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      const id = e.target.getAttribute("data-id");
-      modal.setAttribute("dataId", id);
-    });
-  });
+  const statusRadios = document.getElementsByName("radiostatus");
+  let selectedValue = "";
 
-  btnSaveEL.addEventListener("click", () => {
-    const id = modal.getAttribute("dataId");
-
-    const statusRadios = document.getElementsByName("radiostatus");
-    let selectedValue = "";
-
-    for (let i = 0; i < statusRadios.length; i++) {
-      if (statusRadios[i].checked) {
-        selectedValue = statusRadios[i].value;
-        break;
-      }
+  for (let i = 0; i < statusRadios.length; i++) {
+    if (statusRadios[i].checked) {
+      selectedValue = statusRadios[i].value;
+      break;
     }
-    console.log(selectedValue);
+  }
 
-    $.ajax({
-      method: "PUT",
-      url: "rest/transaction/" + id,
-      dataType: "JSON",
-      contentType: "application/json",
-      beforeSend: addCsrfToken(),
-      data: JSON.stringify({
-        statusUpdate: selectedValue,
-      }),
-      success: (res) => {
-        $("#update-status-modal").modal("hide");
-        location.reload();
-      },
-    });
+  $.ajax({
+    method: "PUT",
+    url: "rest/transaction/" + id,
+    dataType: "JSON",
+    contentType: "application/json",
+    beforeSend: addCsrfToken(),
+    data: JSON.stringify({
+      statusUpdate: selectedValue,
+    }),
+    success: (res) => {
+      console.log("selesai");
+      button.classList.remove("disabled");
+      spinner.style.display = "none";
+      window.location.href = "/admin/dasboard/transaction";
+    },
   });
-});
+}

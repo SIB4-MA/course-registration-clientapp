@@ -15,7 +15,7 @@ import lombok.AllArgsConstructor;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("admin/dasboard/rest/transaction")
+@RequestMapping("admin/dasboard/transaction/rest/transaction")
 public class RestTransactionDC {
 
   private TransactionService transactionService;
