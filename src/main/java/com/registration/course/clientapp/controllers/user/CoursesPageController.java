@@ -1,5 +1,6 @@
 package com.registration.course.clientapp.controllers.user;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +18,7 @@ import lombok.AllArgsConstructor;
 @Controller
 @AllArgsConstructor
 @RequestMapping("/courses")
+@PreAuthorize("hasRole('USER')")
 public class CoursesPageController {
 
   private CourseService courseService;

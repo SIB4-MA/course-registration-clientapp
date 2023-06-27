@@ -1,5 +1,6 @@
 package com.registration.course.clientapp.controllers.admin.rest;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,6 +17,7 @@ import lombok.AllArgsConstructor;
 @RestController
 @AllArgsConstructor
 @RequestMapping("admin/dasboard/transaction/rest/transaction")
+@PreAuthorize("hasRole('ADMIN')")
 public class RestTransactionDC {
 
   private TransactionService transactionService;

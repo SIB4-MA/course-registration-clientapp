@@ -1,5 +1,6 @@
 package com.registration.course.clientapp.controllers.admin;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,7 @@ import lombok.AllArgsConstructor;
 @Controller
 @AllArgsConstructor
 @RequestMapping("/admin/dasboard/course")
+@PreAuthorize("hasRole('ADMIN')")
 public class CourseDasboardController {
 
   private CourseService courseService;
