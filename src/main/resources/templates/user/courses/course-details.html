@@ -178,10 +178,18 @@
                         Qui laudantium consequatur laborum sit qui ad sapiente
                         dila parde sonata raqer a videna mareta paulona marka
                       </p> -->
-                      <p>
-                        Berikut link Pre-Test <a href="https://bit.ly/TestCourseI" target="_blank">clik disini</a>. Selamat mengerjakan
-                      </p>
-                    </div>
+                      <th:block th:if="${auth}">
+                        <p>
+                          Berikut link Pre-Test <a href="https://bit.ly/TestCourseI" target="_blank">clik disini</a>. Selamat mengerjakan
+                        </p>
+                      </th:block>
+                      <th:block th:if="${not auth}">
+                        <p>
+                          silahkan login dahulu untuk mengakses link pre-test
+                        </p>
+                      </th:block>
+
+                      </div>
                     <div class="col-lg-4 text-center order-1 order-lg-2">
                       <img
                         src="/assets/img/course-details-tab-2.png"
