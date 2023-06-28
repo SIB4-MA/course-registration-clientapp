@@ -15,7 +15,8 @@ public class HomePageController {
     if (authentication != null && authentication.isAuthenticated()) {
       model.addAttribute("auth", true);
       model.addAttribute("authentication", authentication);
-      model.addAttribute("isROLE", authentication.getAuthorities().stream().findFirst().orElse(null).getAuthority());
+      model.addAttribute("isROLE", authentication.getAuthorities().stream().findFirst().orElse(null).getAuthority())
+          .toString();
     } else {
       model.addAttribute("auth", false);
     }
