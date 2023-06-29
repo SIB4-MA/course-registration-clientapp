@@ -17,7 +17,7 @@ public class User {
   private String password;
   private boolean is_enabled;
   private boolean is_account_non_locked;
-  private Timestamp created_at;
+  private Timestamp createdAt;
   private Member member;
   private List<Role> roles;
 

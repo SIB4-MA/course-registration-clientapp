@@ -4,11 +4,115 @@
   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
   layout:decorate="~{layout/main-admin}"
 >
+<th:block layout:fragment="add-css">
+    <link rel="stylesheet" th:href="@{/css/course-admin.css}" />
+    </style>
+</th:block>
   <body>
     <!-- =================== main content below ==================== -->
     <div class="main" layout:fragment="main">
-      <div class="details" style="display: block">
+      <!-- <div class="details" style="display: block">
         <h2>Hello, <span>Min </span> >///<</h2>
+      </div> -->
+      <!-- ======================= Cards ================== -->
+      <div class="cardBox">
+        <div class="cardi">
+          <div>
+            <div th:text="${dailyviews}" class="numbers">1,504</div>
+            <div class="cardName">Daily Views</div>
+          </div>
+          <div class="iconBx">
+            <ion-icon name="eye-outline"></ion-icon>
+          </div>
+        </div>
+        <div class="cardi">
+          <div>
+            <div th:text="${membercount}" class="numbers">1,504</div>
+            <div class="cardName">Members</div>
+          </div>
+          <div class="iconBx">
+            <ion-icon name="people-outline"></ion-icon>
+          </div>
+        </div>
+        <div class="cardi">
+          <div>
+            <div th:text="${coursecount}" class="numbers">1,504</div>
+            <div class="cardName">Courses</div>
+          </div>
+          <div class="iconBx">
+            <ion-icon name="book-outline"></ion-icon>
+          </div>
+        </div>
+
+        <div class="cardi">
+          <div>
+            <div th:text="${transactioncount}" class="numbers">1,504</div>
+            <div class="cardName">Transactions</div>
+          </div>
+          <div class="iconBx">
+            <ion-icon name="open-outline"></ion-icon>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================ Order Details List ================= -->
+      <div class="details">
+        <div class="recentOrders">
+          <div class="cardHeader">
+            <h2>Recent Transactions</h2>
+            <a th:href="@{/admin/dasboard/transaction}" class="btn">View All</a>
+          </div>
+
+          <table>
+            <thead>
+              <tr>
+                <td>Name</td>
+                <td>username</td>
+                <td>Status</td>
+              </tr>
+            </thead>
+
+            <tbody>
+              <th:block th:each=" transaction : ${transactions}">
+                <tr>
+                  <th:block th:each=" member : ${transaction.member}">
+                    <td th:text="${member.email}">Star Refrigerator</td>
+                    <th:block th:each=" user : ${member.user}">
+                      <td th:text="${user.username}">$1200</td>
+                    </th:block>
+                  </th:block>
+                  <td>
+                     <span
+                    class="status "
+                   th:classappend="${transaction.status.toString() == 'PROCESS'} ? 'inProgress' : (${transaction.status.toString() == 'SUCCESS'} ? 'delivered' : (${transaction.status.toString() == 'FAILED'} ? 'return' : 'pending' ))"
+                   th:text="${transaction.status}"></span>
+                  </td>
+                </tr>
+              </th:block>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- ================= New Customers ================ -->
+        <div class="recentCustomers" style="display: block;">
+          <div class="cardHeader">
+            <h2>Recent New Members</h2>
+          </div>
+
+          <table>
+            <th:block th:each=" member : ${recentmembers}">
+
+              <tr>
+                <td>
+                  <h4 th:text="${member.name}">David 
+                    <!-- <span>Italy</span> -->
+                  </h4>
+                </td>
+              </tr>
+              
+            </th:block>
+          </table>
+        </div>
       </div>
     </div>
   </body>

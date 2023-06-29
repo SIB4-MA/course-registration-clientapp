@@ -39,7 +39,7 @@
               <tr>
                 <td th:text="${key.count}"></td>
                 <td th:text="${transaction.id}"></td>
-                <td th:text="${transaction.created_at}"></td>
+                <td th:text="${transaction.createdAt}"></td>
                 <th:block th:each="member : ${transaction.member}" >
                   <td th:text="${member.name}"></td>
                   <td th:text="${member.email}"></td>

@@ -17,7 +17,7 @@ public class Transaction {
   private Member member;
   private TransactionStatus status;
   private Boolean isRegistered = false;
-  private Timestamp created_at;
+  private Timestamp createdAt;
   private List<History> histories;
 
 }

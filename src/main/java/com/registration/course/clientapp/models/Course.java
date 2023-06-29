@@ -23,7 +23,7 @@ public class Course {
   private Date start;
   private Date end;
   private Boolean is_enabled = true;
-  private Timestamp created_at;
+  private Timestamp createdAt;
   private Category category;
   List<Transaction> transactions;
 }

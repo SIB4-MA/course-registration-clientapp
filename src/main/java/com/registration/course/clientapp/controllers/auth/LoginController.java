@@ -12,6 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
+import com.registration.course.clientapp.helpers.DailyViewCounter;
 import com.registration.course.clientapp.models.dto.request.LoginRequest;
 import com.registration.course.clientapp.models.dto.response.LoginResponse;
 import com.registration.course.clientapp.models.dto.response.ResponseData;
@@ -24,12 +25,14 @@ import lombok.AllArgsConstructor;
 public class LoginController {
 
   private LoginService loginService;
+  private final DailyViewCounter dailyViewCounter;
 
   @RequestMapping("/login")
   public String loginPage(LoginRequest loginRequest, Model model, Authentication authentication,
       @ModelAttribute("message") String messages) {
     if (authentication != null && authentication.isAuthenticated()) {
       model.addAttribute("auth", true);
+
     } else {
       model.addAttribute("message", messages);
       model.addAttribute("auth", false);
@@ -43,6 +46,7 @@ public class LoginController {
     ResponseData<LoginResponse> responseData = loginService.login(loginRequest);
 
     if (responseData.getPayload().get(0).getAuthorities().get(0).toString().equalsIgnoreCase("ROLE_ADMIN")) {
+      dailyViewCounter.increment();
       return "redirect:/admin/dasboard";
 
     }
@@ -51,6 +55,7 @@ public class LoginController {
       redirectAttributes.addAttribute("message", responseData.getMessages());
       return "redirect:/login";
     }
+    dailyViewCounter.increment();
 
     return "redirect:/";
   }
