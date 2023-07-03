@@ -42,10 +42,8 @@ public class MemberDasboardPage {
       model.addAttribute("auth", true);
       model.addAttribute("authentication", authentication);
       model.addAttribute("isROLE", authentication.getAuthorities().stream().findFirst().orElse(null).getAuthority());
-      Integer memberId = userService.getByUsername(authentication.getPrincipal().toString()).getPayload().get(0)
-          .getId();
       model.addAttribute("transactions",
-          transactionService.getTransactionByMemberId(memberId).getPayload());
+          transactionService.getTransactionByMemberIdSession().getPayload());
     } else {
       model.addAttribute("auth", false);
     }
