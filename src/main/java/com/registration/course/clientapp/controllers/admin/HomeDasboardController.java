@@ -26,6 +26,7 @@ public class HomeDasboardController {
 
   @GetMapping
   public String homeDasboard(Model model) {
+    model.addAttribute("home", true);
     model.addAttribute("membercount", memberService.getAll().getPayload().size() - 1);
     model.addAttribute("coursecount", courseService.getAll().getPayload().size());
     model.addAttribute("transactioncount", transactionService.getAll().getPayload().size());

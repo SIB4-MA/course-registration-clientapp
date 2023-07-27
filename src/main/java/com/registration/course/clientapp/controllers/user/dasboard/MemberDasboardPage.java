@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.registration.course.clientapp.services.HistoryService;
 import com.registration.course.clientapp.services.TransactionService;
-import com.registration.course.clientapp.services.UserService;
-
 import lombok.AllArgsConstructor;
 
 @Controller
@@ -20,7 +18,6 @@ import lombok.AllArgsConstructor;
 public class MemberDasboardPage {
 
   private TransactionService transactionService;
-  private UserService userService;
   private HistoryService historyService;
 
   @GetMapping

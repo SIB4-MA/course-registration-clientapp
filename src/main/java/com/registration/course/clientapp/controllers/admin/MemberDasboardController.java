@@ -20,6 +20,7 @@ public class MemberDasboardController {
 
   @GetMapping
   public String getAllMembers(Model model) {
+    model.addAttribute("member", true);
     model.addAttribute("members", memberService.getAll().getPayload());
 
     return "admin/member/member";

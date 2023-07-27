@@ -23,6 +23,7 @@ public class TransactionDasboardController {
   @GetMapping
   public String getAllTransactions(Model model,
       TransactionStatusAndIsRegisteredRequest transactionStatusAndIsRegisteredRequest) {
+    model.addAttribute("transaction", true);
     model.addAttribute("transactions", transactionService.getAll().getPayload());
 
     return "admin/transaction/transaction";
@@ -30,6 +31,7 @@ public class TransactionDasboardController {
 
   @GetMapping("/{id}")
   public String getTransactionById(@PathVariable Integer id, Model model) {
+    model.addAttribute("transaction", true);
     model.addAttribute("transaction", transactionService.getTransactionById(id).getPayload().get(0));
 
     return "admin/transaction/update-transaction";

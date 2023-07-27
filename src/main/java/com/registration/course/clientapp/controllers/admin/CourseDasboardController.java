@@ -24,20 +24,21 @@ public class CourseDasboardController {
 
   @GetMapping
   public String getAllCourses(Model model) {
+    model.addAttribute("course", true);
     model.addAttribute("courses", courseService.getAll().getPayload());
     return "admin/course/course";
   }
 
   @GetMapping("/{id}")
   public String detailPage(@PathVariable Integer id, Model model) {
-
+    model.addAttribute("course", true);
     model.addAttribute("course", courseService.getById(id).getPayload().get(0));
     return "admin/course/course-detail";
   }
 
   @GetMapping("/update/{id}")
   public String updatePage(@PathVariable Integer id, Model model) {
-
+    model.addAttribute("course", true);
     model.addAttribute("course", courseService.getById(id).getPayload().get(0));
     return "admin/course/course-update";
   }
@@ -50,7 +51,7 @@ public class CourseDasboardController {
 
   @GetMapping("/create")
   public String createPage(Model model, Course course) {
-
+    model.addAttribute("course", true);
     return "admin/course/course-create";
   }
 

@@ -35,8 +35,11 @@
             </a>
           </li>
 
-          <li>
-            <a th:href="@{/admin/dasboard}">
+          <li th:style="${home} ? 'background-color: white' : ''">
+            <a
+              th:href="@{/admin/dasboard}"
+              th:style="${home} ? 'color: var(--blue)' : 'color: white'"
+            >
               <span class="icon">
                 <ion-icon name="home-outline"></ion-icon>
               </span>
@@ -44,8 +47,11 @@
             </a>
           </li>
 
-          <li>
-            <a th:href="@{/admin/dasboard/transaction}">
+          <li th:style="${transaction} ? 'background-color: white' : ''">
+            <a
+              th:href="@{/admin/dasboard/transaction}"
+              th:style="${transaction} ? 'color: var(--blue)' : 'color: white'"
+            >
               <span class="icon">
                 <ion-icon name="open-outline"></ion-icon>
               </span>
@@ -53,8 +59,11 @@
             </a>
           </li>
 
-          <li>
-            <a th:href="@{/admin/dasboard/member}">
+          <li th:style="${member} ? 'background-color: white' : ''">
+            <a
+              th:href="@{/admin/dasboard/member}"
+              th:style="${member} ? 'color: var(--blue)' : 'color: white'"
+            >
               <span class="icon">
                 <ion-icon name="people-outline"></ion-icon>
               </span>
@@ -62,8 +71,11 @@
             </a>
           </li>
 
-          <li>
-            <a th:href="@{/admin/dasboard/course}">
+          <li th:style="${course} ? 'background-color: white' : ''">
+            <a
+              th:href="@{/admin/dasboard/course}"
+              th:style="${course} ? 'color: var(--blue)' : 'color: white'"
+            >
               <span class="icon">
                 <ion-icon name="book-outline"></ion-icon>
               </span>
